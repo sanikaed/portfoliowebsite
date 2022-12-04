@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Contact Page</title>
+  <meta content="sanikaedwankar's Portfolio" name="description">
+
+  <!-- Favicons -->
+  <link href="/assets/img/se-logo.svg" rel="icon">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    
+    
+  .contact-banner {
+  color: rgb(19, 17, 17);
+  padding: 40px;
+  padding-top: 100px;
+margin-top: 20px;}
+
+.placeholder{ color: rgb(131, 131, 131);opacity: 1;} 
+
+
+.invalid {
+  border: 1px solid red;
+}
+
+p {
+  font-size: 20px;
+}
+
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  width: 280px;
+  border: 1px solid rgb(0, 114, 66);
+  font-size: 18px;
+  outline: none;
+  color: #333;
+}
+
+.form-control {
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-radius: 1rem;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.hide {
+  opacity: 0;
+}
+
+button {
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+button:hover {
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 114, 66) 0%,
+    rgb(4, 109, 91) 100%
+  );
+}
+
+form {
+  padding: 40px;
+}
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+
+    <a href="index.html" class="logo">SE</a> <!--logo-->
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="work.html">Portfolio</a></li>
+          <li><a href="games.html"> Games</a></li>
+          <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="https://www.instagram.com/sanohuh/" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.behance.net/sanikaedwankar18" class="behance"><i class="bi bi-behance"></i></i></a>
+      </div>
+
+    </div>
+
+  </header><!-- End Header -->
+
+  <div class="cursor"></div> <!--cursor function-->
+  <!-- contact page starts -->
+  <div class="contact-banner">
+    <h1> Let's work together!</h1>
+
+    <p class="contact-description">
+      Please fill in the form below and
+      submit
+    </p>
+  </div>
+
+  <form name="form-group">
+      <label>Full Name</label>
+      <input name="name" class="form-control"
+        placeholder="First and Last Name" />
+      <div class="error hide">Name is required</div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input  class="form-control"
+        name="email"
+        placeholder="email@example.com"
+      />
+      <div class="error hide">Email is invalid</div>
+    </div>
+
+    <div class="form-group">
+      <label>Message</label>
+      <textarea name="message"  class="form-control"  placeholder="Drop a message or a feedback"
+      id="message"
+      cols="30"
+      rows="5"></textarea>
+      <div class="error hide">Message is required</div>
+    </div>
+
+    <hr />
+
+    <button type="submit" class="btn btn-dark">SUBMIT FORM</button>
+  </form>   <!-- Contact page ends-->
+
+  <!--footer -->
+  <footer style="  background-color: #fec1f6; 
+  color:white; padding: 5px; 
+  text-align: center">
+ my email : sanikaed@gmail.com 
+  </footer>
+
+  <!-- Contact js form validation-->
+  <script>  const form = document.querySelector("form[name='form-group']");
+    const nameInput = document.querySelector("input[name='name']");
+    const emailInput = document.querySelector("input[name='email']");
+    const messageInput = document.querySelector("textarea[name='message']");
+    
+    nameInput.isValid = () => !!nameInput.value;
+    emailInput.isValid = () => isValidEmail(emailInput.value);
+    messageInput.isValid = () => !!messageInput.value;
+    
+    const inputFields = [nameInput, emailInput, messageInput];
+    
+    const isValidEmail = (email) => {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    };
+    
+    let shouldValidate = false;
+    let isFormValid = false;
+    
+    const validateInputs = () => {
+      console.log("we are here");
+      if (!shouldValidate) return;
+    
+      isFormValid = true;
+      inputFields.forEach((input) => {
+        input.classList.remove("invalid");
+        input.nextElementSibling.classList.add("hide");
+    
+        if (!input.isValid()) {
+          input.classList.add("invalid");
+          isFormValid = false;
+          input.nextElementSibling.classList.remove("hide");
+        }
+      });
+    };
+    
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      shouldValidate = true;
+      validateInputs();
+      if (isFormValid) {
+      }
+    });
+    
+    inputFields.forEach((input) => input.addEventListener("input", validateInputs));</script>
+<!--  ======================-->
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+<script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>
